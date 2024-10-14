@@ -1,4 +1,4 @@
-# CaTFold
+# CaTFold.
 
 This repository contains code for replicating results from the associated paper:
 
