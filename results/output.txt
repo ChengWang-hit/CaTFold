@@ -1,0 +1,24 @@
+#####Stage 1#####
+Here is the configuration of this run: 
+Munch({'gpu_id': '0', 'dataset': 'RNAStralign', 'split': 'train', 'pretrain_epochs': 6000, 'refine_epochs': 100, 'threshold': 0.5, 'embedding_dim': 128, 'seed': 2023})
+Data Loading Done!!!
+ArchiveII......
+testing……
+precision:  0.9302377
+recall:  0.9246326
+F1:  0.9255609
+
+precision(S):  0.9386412
+recall(S):  0.9333332
+F1(S):  0.93405634
+
+ArchiveII_max600......
+testing……
+precision:  0.9390877
+recall:  0.9327421
+F1:  0.9341338
+
+precision(S):  0.94748205
+recall(S):  0.94142187
+F1(S):  0.9426158
+
