@@ -1,0 +1,5 @@
+{
+	"gpu_id": "0",
+	"threshold":0.5,
+	"embedding_dim":128
+}
