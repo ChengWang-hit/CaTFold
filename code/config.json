@@ -1,5 +1,8 @@
 {
 	"gpu_id": "0",
+	"pretrain_epochs": 3000,
+	"refine_epochs": 5,
 	"threshold":0.5,
-	"embedding_dim":128
+	"embedding_dim":128,
+	"seed":2023
 }

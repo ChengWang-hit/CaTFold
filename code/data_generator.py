@@ -3,7 +3,6 @@ import os
 from multiprocessing import Pool
 
 import _pickle as cPickle
-import numpy as np
 from torch.utils import data
 from tqdm import tqdm
 from utils import encoding2seq

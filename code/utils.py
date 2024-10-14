@@ -74,7 +74,7 @@ def get_args():
     argparser.add_argument(
         '-c', '--config',
         metavar='C',
-        default='/code/config.json',
+        default='code/config.json',
         help='The Configuration file'
     )
     argparser.add_argument(

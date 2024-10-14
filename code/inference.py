@@ -1,7 +1,3 @@
-import os
-
-os.chdir('project/RNA/CaTFold/submission_CodeOcean')
-
 import collections
 from data_generator import DataGenerator, Dataset
 
@@ -112,7 +108,7 @@ def main():
     print('Data Loading Done!!!')
 
     model = TaGFold(ct_layer_num=6)
-    checkpoint_path = 'data/checkpoint/CaTFold_best.pt'
+    checkpoint_path = 'checkpoint/CaTFold_best.pt'
     model.load_state_dict(torch.load(checkpoint_path, map_location="cuda" if torch.cuda.is_available() else "cpu")['model'])
     model.cuda()
 
