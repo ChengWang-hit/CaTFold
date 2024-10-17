@@ -1,8 +1,6 @@
 # CaTFold
 
-This repository contains code for replicating results from the associated paper:
-
-Cheng Wang, Yang Liu, Gaurav Sharma, "CaTFold: Improving RNA secondary structure prediction by incorporating prior information"
+This repository contains code for replicating results from the associated paper: Cheng Wang, Yang Liu, Gaurav Sharma, "CaTFold: Improving RNA secondary structure prediction by incorporating prior information."
 
 ## Dependencies
 
@@ -57,17 +55,17 @@ This command will generate the following new files:
 
 `CaTFold/data/RNAStralign/legal_pairs_test_max600`
 
-## Evaluate CaTFold
+## Evaluating CaTFold
 
 ```bash
 python3 code/inference.py
 ```
 
-This command measures the performance of the checkpoint on The ArchiveII and RNAStralign_test dataset, and outputs the result to 'results/output.txt' :
+This command measures the performance of the checkpoint on the ArchiveII and RNAStralign_test dataset, and outputs the result in ``results/output.txt``.
 
 ### Using Code Ocean
 
-We recommend using the Code Ocean version of this program, which can be run using Code Ocean's built-in interface. (Site: xxx)
+We recommend using the Code Ocean version of this program, which can be run using Code Ocean's built-in interface. (Site: [https://doi.org/10.24433/CO.2816125.v1](https://doi.org/10.24433/CO.2816125.v1))
 
 ## Training CaTFold
 
@@ -82,3 +80,13 @@ Refining CaTFold:
 ```bash
 python3 code/refine_ddp.py
 ```
+
+## Predicting a given RNA sequence
+
+Modify ``input_RNA`` to the target sequence in ``code/infering_RNA.py``, and run the following command:
+
+```bash
+python3 code/infering_RNA.py
+```
+
+The terminal will output the secondary structure predicted by CaTFold in **dot-bracket** format.
