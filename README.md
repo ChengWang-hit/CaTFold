@@ -83,6 +83,8 @@ python3 code/refine_ddp.py
 
 ## Predicting a given RNA sequence
 
+Trained on the **RNAStralign_train**.
+
 Modify ``input_RNA`` to the target sequence in ``code/infering_RNA.py``, and run the following command:
 
 ```bash
