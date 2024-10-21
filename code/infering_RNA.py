@@ -1,5 +1,4 @@
 import os
-os.chdir('project/RNA/CaTFold/submission_CodeOcean')
 
 import torch
 from utils import *
