@@ -87,7 +87,7 @@ def main():
     data = preprocess_data(input_RNA)
 
     model = TaGFold()
-    checkpoint_path = 'data/checkpoint/CaTFold_best.pt'
+    checkpoint_path = 'checkpoint/CaTFold_best.pt'
     model.load_state_dict(torch.load(checkpoint_path, map_location="cuda" if torch.cuda.is_available() else "cpu")['model'])
     model.cuda()
     
