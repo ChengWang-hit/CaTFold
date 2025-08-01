@@ -1,0 +1,7 @@
+{
+	"train_epochs": 1000,
+	"threshold":0.5,
+	"embedding_dim":256,
+	"layer_num":8,
+	"nhead":8
+}

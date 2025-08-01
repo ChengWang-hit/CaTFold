@@ -1,0 +1,5 @@
+{
+	"embedding_dim_pretrain":256,
+	"layer_num_pretrain":8,
+	"nhead_pretrain":8
+}
