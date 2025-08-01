@@ -1,94 +1,141 @@
-# CaTFold
+# CaTFold: An Efficient Deep Learning Approach for RNA Secondary Structure Prediction
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+[![Code Ocean](https://codeocean.com/hubfs/Code%20Ocean%20U4%20Theme%20Assets/code-ocean-logo-white.svg)](https://doi.org/10.24433/CO.2816125.v1)
 
-This repository contains code for replicating results from the associated paper: Cheng Wang, Yang Liu, Gaurav Sharma, "CaTFold: Improving RNA secondary structure prediction by incorporating prior information."
+This repository contains the official source code and models for the paper:
 
-## Dependencies
+> **CaTFold: An Efficient Deep Learning Approach for Out-of-Family RNA Secondary Structure Prediction**
+>
+> *Cheng Wang, Gaurav Sharma, Haozhuo Zheng, Ping Li, Yang Liu*
+>
+<!-- > **[Link to Paper Coming Soon]** -->
 
-The program requires Python 3.8.x and the following packages:
+---
 
-* PyTorch v2.0.1
-* tensorboardx v2.6.2.2
-* munch v4.0.0
-* networkx v3.0
-* numpy v1.23.1
-* scipy v1.10.1
-* tqdm v4.66.1
-* matplotlib v3.7.3
-* seaborn v0.13.2
-* pandas v2.0.3
+## Table of Contents
+- [Overview](#overview)
+- [Setup and Installation](#setup-and-installation)
+- [Quick Start: Prediction on Your Own Data](#quick-start-prediction-on-your-own-data)
+- [Reproducing Our Results](#reproducing-our-results)
+  - [Fine-tuning and Evaluation](#fine-tuning-and-evaluation)
+  - [Pre-training from Scratch](#pre-training-from-scratch)
+- [Reproducibility with Code Ocean](#reproducibility-with-code-ocean)
+- [Citation](#citation)
+- [License](#license)
 
-GPU is highly recommended.
+---
 
-## Data preparation
+## Overview
+CaTFold is a deep learning-based method designed for accurate and efficient prediction of RNA secondary structures, with a strength in handling out-of-family sequences. This repository provides all the necessary tools to use our pre-trained models, reproduce the results from our paper, and train or fine-tune the model on new datasets.
 
-Clone this repository, unzip data.zip and organize it into the following path:
+---
 
-`CaTFold/data/ArchiveII/all.pickle`
+## Setup and Installation
+Follow these steps to set up the environment. A GPU is highly recommended for both training and inference.
 
-`CaTFold/data/RNAStralign/train_filtered.pickle`
-
-`CaTFold/data/RNAStralign/test.pickle`
-
-## Data preprocessing
-
+**1. Clone the Repository**
 ```bash
-python3 code/data_preprocess.py
+git clone https://github.com/ChengWang-hit/CaTFold.git
+cd CaTFold
 ```
 
-This command will generate the following new files:
-
-`CaTFold/data/ArchiveII/max600.pickle`
-
-`CaTFold/data/RNAStralign/train_filtered_max600.pickle`
-
-`CaTFold/data/RNAStralign/test_max600.pickle`
-
-`CaTFold/data/ArchiveII/legal_pairs_all`
-
-`CaTFold/data/ArchiveII/legal_pairs_max600`
-
-`CaTFold/data/RNAStralign/legal_pairs_train_filtered`
-
-`CaTFold/data/RNAStralign/legal_pairs_train_filtered_max600`
-
-`CaTFold/data/RNAStralign/legal_pairs_test`
-
-`CaTFold/data/RNAStralign/legal_pairs_test_max600`
-
-## Evaluating CaTFold
+**2. Install Dependencies**
+We recommend creating a virtual environment (e.g., using `conda`). All required packages are listed in `requirements.txt`.
 
 ```bash
-python3 code/inference.py
+# Create and activate a conda environment (optional but recommended)
+conda create -n catfold python=3.8
+conda activate catfold
+
+# Install packages
+pip install -r requirements.txt
 ```
 
-This command measures the performance of the checkpoint on the ArchiveII and RNAStralign_test dataset, and outputs the result in ``results/output.txt``.
+**3. Download Datasets**
+All datasets required for training and evaluation are hosted on Zenodo. Please see the detailed instructions in the `data/README.md` file for download links and setup.
 
-### Using Code Ocean
+**4. Download Pre-trained Checkpoints**
+We provide pre-trained model checkpoints to allow for immediate inference and fine-tuning. Please see the instructions in the `checkpoints/README.md` file for download links.
 
-We recommend using the Code Ocean version of this program, which can be run using Code Ocean's built-in interface. (Site: [https://doi.org/10.24433/CO.2816125.v1](https://doi.org/10.24433/CO.2816125.v1))
+---
 
-## Training CaTFold
+## Quick Start: Prediction on Your Own Data
 
-Pre-training CaTFold:
+1.  **Prepare your input file**: Ensure your sequences are in a `.fasta` file. The file can contain one or more sequences.
+
+2.  **Configure the paths**: Open the `code/inference_fasta/config.json` file and modify the `fasta_file` and `output_dir` paths.
+    ```json
+    {
+      "fasta_file": "path_to_your_input.fasta",
+      "output_dir": "path_to_your_output_directory"
+    }
+    ```
+
+3.  **Run the prediction script**:
+    ```bash
+    python code/inference_fasta/inference.py
+    ```
+    The predicted secondary structures will be saved as `.bpseq` files in your specified output directory.
+
+---
+
+## Reproducing Our Results
+This section details how to reproduce the main experiments from our paper.
+
+### Fine-tuning and Evaluation
+**1. Reproduce All Paper Results**
+
+To evaluate our checkpoints on all benchmark datasets and reproduce the main results reported in the paper, simply run the following script. Ensure that all datasets and checkpoints have been downloaded and placed correctly.
 
 ```bash
-python3 code/pretrain_ddp.py
+python code/finetune/test_all_dataset.py
 ```
 
-Refining CaTFold:
+**2. Fine-tune on Datasets in the Paper**
+
+To fine-tune the CaTFold model on dataset, use the following command. You will need to prepare your data and create a corresponding configuration file.
 
 ```bash
-python3 code/refine_ddp.py
+python path_to_dataset_code.py
 ```
 
-## Predicting a given RNA sequence
+### Pre-training from Scratch
+To pre-train the CaTFold model from scratch (including the warm-up and main pre-training stages), use the following command. This requires a multi-GPU setup.
 
-Trained on the **RNAStralign_train**.
-
-Modify ``input_RNA`` to the target sequence in ``code/infering_RNA.py``, and run the following command:
+First, ensure your pre-training dataset path is correctly specified in the training configuration file. Then, run the distributed training script:
 
 ```bash
-python3 code/infering_RNA.py
+# This example uses 2 GPUs (0 and 1)
+torchrun --standalone --nproc_per_node=2 code/pretrain/pretrain_ddp.py
 ```
 
-The terminal will output the secondary structure predicted by CaTFold in **dot-bracket** format.
+---
+
+## Reproducibility with Code Ocean
+We have also made our work available as a Code Ocean Compute Capsule. This provides a pre-configured environment with all dependencies, data, and code, allowing you to run our experiments with a single click.
+
+> **Access the Capsule: [https://doi.org/10.24433/CO.2816125.v1](https://doi.org/10.24433/CO.2816125.v1)**
+
+---
+
+<!-- ## Citation
+If you find CaTFold useful in your research, please consider citing our paper:
+
+```bibtex
+@article{wang2023catfold,
+  title={CaTFold: An Efficient Deep Learning Approach for Out-of-Family RNA Secondary Structure Prediction},
+  author={Wang, Cheng and Sharma, Gaurav and Zheng, Haozhuo and Li, Ping and Liu, Yang},
+  journal={Journal or Conference Name},
+  year={2023},
+  volume={XX},
+  pages={YY-ZZ},
+  doi={Your Paper's DOI}
+}
+``` -->
+<!--  -->
+<!-- --- -->
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
