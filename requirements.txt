@@ -1,0 +1,17 @@
+# Core deep learning framework
+torch==2.0.1
+
+# Visualization and logging
+tensorboardx==2.6.2.2
+matplotlib==3.7.3
+seaborn==0.13.2
+
+# Data handling and scientific computing
+numpy==1.23.1
+scipy==1.10.1
+pandas==2.0.3
+
+# Others
+munch==4.0.0
+networkx==3.0
+tqdm==4.66.1
