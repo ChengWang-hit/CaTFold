@@ -6,7 +6,7 @@ This directory is the location for all datasets required for pre-training, fine-
 ## Setup Instructions
 1.  **Download the Datasets**
 
-    All necessary datasets are available for download from [Zenodo URL].
+    All necessary datasets are available for download from [![DOI](https://zenodo.org/badge/871105419.svg)](https://doi.org/10.5281/zenodo.13937606).
 
 2.  **Unzip the Archives**
 
