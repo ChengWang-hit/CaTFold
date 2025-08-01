@@ -56,19 +56,12 @@ class DataGenerator(object):
             row_indices, col_indices = torch.triu_indices(seq_length, seq_length, offset=1) # Upper triangle
             pred_pairs = torch.vstack((row_indices, col_indices))
             label_ss = contact_map[pred_pairs[0, :], pred_pairs[1, :]]
-            
-            # pk
-            true_pairs_set = {tuple(p) for p in self.ss[index]}
-            pk_pairs_set = get_pseudoknot_pairs(true_pairs_set)
-            pk_contact_map = pairs2map(np.array(list(pk_pairs_set)), seq_length)
-            pk_label_ss = pk_contact_map[pred_pairs[0, :], pred_pairs[1, :]]
 
             result = (
                     torch.Tensor(node_onehot),
                     torch.Tensor(node_pe),															
                     seq_length,
-                    torch.Tensor(label_ss),
-                     torch.Tensor(pk_label_ss))
+                    torch.Tensor(label_ss))
         else:
             with open(os.path.join(self.mask_dir, 'mask_matrix', f'{self.mask_matrix_idx[index]}.pickle'), 'rb') as f:
                 pred_pairs = torch.LongTensor(cPickle.load(f)).T # (2, N)
