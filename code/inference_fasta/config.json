@@ -2,6 +2,6 @@
 	"embedding_dim_pretrain":256,
 	"layer_num_pretrain":8,
 	"nhead_pretrain":8,
-	"fasta_path":"github_submission/CaTFold/code/inference_fasta/examples/test.fasta",
-	"output_dir":"github_submission/CaTFold/code/inference_fasta/examples"
+	"fasta_path":"code/inference_fasta/examples/test.fasta",
+	"output_dir":"code/inference_fasta/examples"
 }
