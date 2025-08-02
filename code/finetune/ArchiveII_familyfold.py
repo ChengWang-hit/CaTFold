@@ -128,7 +128,7 @@ def main(test_family, epoch, cuda_id=0):
 	print("Adapter #Params Num : %d" % (sum([x.nelement() for x in model.predictor_adapter.parameters()]),))
 
 	start = time.time()
-	log_path = 'logs/finetune/family_fold/{}_{}_PK_F1'.format(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())), test_family)
+	log_path = 'logs/finetune/family_fold/{}_{}'.format(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())), test_family)
 	# record result
 	writer = SummaryWriter(log_dir=log_path)
 

@@ -101,7 +101,7 @@ def main(epoch, cuda_id=0):
 	model.cuda()
 
 	start = time.time()
-	log_path = 'logs/finetune/RNAStralign/{}'.format(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+	log_path = 'logs/finetune/RNAStralign/{}_all'.format(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
 	# record result
 	writer = SummaryWriter(log_dir=log_path)
 
