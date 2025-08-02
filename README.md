@@ -1,7 +1,7 @@
 # CaTFold: An Efficient Deep Learning Approach for RNA Secondary Structure Prediction
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
-<!-- [![Code Ocean](https://codeocean.com/hubfs/Code%20Ocean%20U4%20Theme%20Assets/code-ocean-logo-white.svg)](https://doi.org/10.24433/CO.2816125.v1) -->
+[![DOI](https://zenodo.org/badge/871105419.svg)](https://doi.org/10.5281/zenodo.13937606)
+[![Code Ocean](https://8277274.fs1.hubspotusercontent-na1.net/hubfs/8277274/Code%20Ocean%20U4%20Theme%20Assets/code-ocean-logo-white.svg)](xxx)
 
 This repository contains the official source code and models for the paper:
 
@@ -64,11 +64,12 @@ We provide pre-trained model checkpoints to allow for immediate inference and fi
 
 1.  **Prepare your input file**: Ensure your sequences are in a `.fasta` file. The file can contain one or more sequences.
 
-2.  **Configure the paths**: Open the `code/inference_fasta/config.json` file and modify the `fasta_file` and `output_dir` paths.
+2.  **Configure the paths**: Open the `code/inference_fasta/config.json` file and modify the `fasta_path`,  `output_dir` and `checkpoint_path`.
     ```json
     {
-      "fasta_file": "path_to_your_input.fasta",
-      "output_dir": "path_to_your_output_directory"
+      "fasta_path": "path_to_your_input.fasta",
+      "output_dir": "path_to_your_output_directory",
+      "checkpoint_path": "path_to_checkpoint"
     }
     ```
 
@@ -84,7 +85,7 @@ We provide pre-trained model checkpoints to allow for immediate inference and fi
 This section details how to reproduce the main experiments from our paper.
 
 ### Fine-tuning and Evaluation
-**1. Reproduce All Paper Results**
+**1. Reproduce Paper Results**
 
 To evaluate our checkpoints on all benchmark datasets and reproduce the main results reported in the paper, simply run the following script. Ensure that all datasets and checkpoints have been downloaded and placed correctly.
 
@@ -113,9 +114,9 @@ torchrun --standalone --nproc_per_node=2 code/pretrain/pretrain_ddp.py
 ---
 
 ## Reproducibility with Code Ocean
-We have also made our work available as a Code Ocean Compute Capsule. This provides a pre-configured environment with all dependencies, data, and code, allowing you to run our experiments with a single click.
+We have also made our work available as a Code Ocean Compute Capsule. This provides a pre-configured environment with all dependencies, data, and code, allowing you to run our main experiments with a single click.
 
-> **Access the Capsule: [https://doi.org/10.24433/CO.2816125.v1](https://doi.org/10.24433/CO.2816125.v1)**
+> **Access the Capsule: [xxx](xxx)**
 
 ---
 
