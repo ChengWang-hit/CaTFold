@@ -31,6 +31,12 @@ This repository contains the official source code and models for the paper:
 ## Overview
 CaTFold is a deep learning-based method designed for accurate and efficient prediction of RNA secondary structures, with a strength in handling out-of-family sequences. This repository provides all the necessary tools to use our pre-trained models, reproduce the results from our paper, and train or fine-tune the model on new datasets.
 
+### CaTFold Workflow
+![CaTFold Workflow](pictures/Graphical_abstract.png)
+
+### CaTFold Architecture
+![CaTFold Architecture](pictures/CaTFold_architecture.png)
+
 ---
 
 ## Setup and Installation
