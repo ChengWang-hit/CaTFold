@@ -1,7 +1,7 @@
 # CaTFold: An Efficient Deep Learning Approach for RNA Secondary Structure Prediction
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![DOI](https://zenodo.org/badge/871105419.svg)](https://doi.org/10.5281/zenodo.13937606)
-[![Code Ocean](https://8277274.fs1.hubspotusercontent-na1.net/hubfs/8277274/Code%20Ocean%20U4%20Theme%20Assets/code-ocean-logo-white.svg)](xxx)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Zenodo](https://img.shields.io/badge/Zenodo-10.5281/zenodo.13937606-blue)](https://doi.org/10.5281/zenodo.13937606)
+[![Code Ocean](https://img.shields.io/badge/CodeOcean-xxx-blue)](xxx)
 
 This repository contains the official source code and models for the paper:
 
