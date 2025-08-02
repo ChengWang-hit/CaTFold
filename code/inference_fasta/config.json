@@ -3,5 +3,7 @@
 	"layer_num_pretrain":8,
 	"nhead_pretrain":8,
 	"fasta_path":"code/inference_fasta/examples/test.fasta",
-	"output_dir":"code/inference_fasta/examples"
+	"output_dir":"code/inference_fasta/examples",
+	"checkpoint_path":"checkpoints/CaTFold_finetune_bpRNA1mtest.pt"
+
 }
