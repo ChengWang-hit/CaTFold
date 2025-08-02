@@ -49,9 +49,8 @@ def test(model, data_loader, threshold=0.5):
     print('precision: ', np.average(nt_exact_p))
     print('recall: ', np.average(nt_exact_r))
     print('F1: ', np.average(nt_exact_f1))
-    print()
-    
     print('std error f1: ', np.std(nt_exact_f1, ddof=1) / np.sqrt(len(nt_exact_f1)))
+    print()
 
     # nt_exact_p_s,nt_exact_r_s,nt_exact_f1_s = zip(*result_s)
     # print('precision_s: ', np.average(nt_exact_p_s))
