@@ -25,8 +25,9 @@ This repository contains the official source code and models for the paper:
   - [Fine-tuning and Evaluation](#fine-tuning-and-evaluation)
   - [Pre-training from Scratch](#pre-training-from-scratch)
 - [Reproducibility with Code Ocean](#reproducibility-with-code-ocean)
-- [Citation](#citation)
 - [License](#license)
+<!-- - [Citation](#citation) -->
+
 
 ---
 
