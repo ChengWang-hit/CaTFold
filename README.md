@@ -17,6 +17,8 @@ This repository contains the official source code and models for the paper:
 
 ## Table of Contents
 - [Overview](#overview)
+  - [CaTFold Workflow](#catfold-workflow)
+  - [CaTFold Architecture](#catfold-architecture)
 - [Setup and Installation](#setup-and-installation)
 - [Quick Start: Prediction on Your Own Data](#quick-start-prediction-on-your-own-data)
 - [Reproducing Our Results](#reproducing-our-results)
