@@ -91,6 +91,7 @@ def main(cuda_idx=0):
     ct_layer_num_pretrain = config.layer_num_pretrain
     nhead_pretrain = config.nhead_pretrain
     fasta_path = config.fasta_path
+    checkpoint_path = config.checkpoint_path
     
     params = {'drop_last': False,
               'collate_fn': collate}
@@ -109,7 +110,7 @@ def main(cuda_idx=0):
     model.cuda()
     print("Model #Params Num : %d" % (sum([x.nelement() for x in RefineNet(embedding_dim_pretrain, ct_layer_num_pretrain, nhead_pretrain).parameters()]),))
 
-    checkpoint = torch.load(f'checkpoints/CaTFold_finetune_bpRNA1mtest.pt', map_location=f'cuda:{cuda_idx}')
+    checkpoint = torch.load(checkpoint_path, map_location=f'cuda:{cuda_idx}')
     model.load_state_dict(checkpoint, strict=False)
 
     start = time.time()
