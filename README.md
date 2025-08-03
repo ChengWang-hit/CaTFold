@@ -14,6 +14,8 @@ This repository contains the official source code and models for the paper:
 >
 <!-- > **[Link to Paper Coming Soon]** -->
 
+If you wish to try out CaTFold quickly on your own RNA sequence, we recommend that you use the [**Code Ocean**](xxx) web interface, where you can run the model and obtain predictions without having to install your own software. For more extensive experiments, please follow the instructions below for setting up CaTFold in your own computational environment.
+
 ---
 
 ## Table of Contents
