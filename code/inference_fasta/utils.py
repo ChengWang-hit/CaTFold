@@ -58,7 +58,7 @@ def get_args():
 	argparser.add_argument(
 		'-c', '--config',
 		metavar='C',
-		default='/root/autodl-tmp/project/home/wangcheng/project/RNA/CaTFold_light_pretrain_contrafold/github_submission/CaTFold/code/inference_fasta/config.json',
+		default='code/inference_fasta/config.json',
 		help='The Configuration file'
 	)
 	argparser.add_argument(
