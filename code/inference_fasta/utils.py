@@ -1,6 +1,10 @@
 import argparse
 import networkx as nx
 from Bio import SeqIO
+import forgi
+import forgi.visual.mplotlib as fvm
+import forgi.graph.bulge_graph as fgb
+import matplotlib.pyplot as plt
 
 import numpy as np
 import torch
@@ -228,36 +232,75 @@ def collate(data_list):
 		   node_set1_list
 
 def contact_map_to_bpseq(sequence, contact_map):
-    """Converts a sequence and its contact map to the BPSEQ format string."""
-    seq_len = len(sequence)
-    pairing = np.zeros(seq_len, dtype=int)
+	"""Converts a sequence and its contact map to the BPSEQ format string."""
+	seq_len = len(sequence)
+	pairing = np.zeros(seq_len, dtype=int)
+	
+	paired_indices = np.where(contact_map)
+	
+	for i, j in zip(*paired_indices):
+		if i < j:
+			pairing[i] = j + 1
+			pairing[j] = i + 1
+			
+	bpseq_lines = []
+	for i in range(seq_len):
+		line = f"{i+1} {sequence[i]} {int(pairing[i])}"
+		bpseq_lines.append(line)
+		
+	return "\n".join(bpseq_lines)
+
+def pairs_to_dot_bracket(pairs, seq_len):
+	structure = ['.'] * seq_len
+	for i, j in pairs:
+		structure[i] = '('
+		structure[j] = ')'
+	return "".join(structure)
+
+def contact_map_to_pairs(contact_map):
+    if not isinstance(contact_map, np.ndarray):
+        contact_map = np.array(contact_map)
     
-    paired_indices = np.where(contact_map)
-    
-    for i, j in zip(*paired_indices):
-        if i < j:
-            pairing[i] = j + 1
-            pairing[j] = i + 1
-            
-    bpseq_lines = []
-    for i in range(seq_len):
-        line = f"{i+1} {sequence[i]} {int(pairing[i])}"
-        bpseq_lines.append(line)
-        
-    return "\n".join(bpseq_lines)
+    indices = np.where(np.triu(contact_map, k=1) == 1)
+    pairs = list(zip(indices[0], indices[1]))
+    return pairs
+
+def draw_rna_structure(sequence, pairs, save_path, bpseq_path):
+	if not pairs:        
+		print(f"Skipping structure for {os.path.basename(save_path)} as it has no base pairs.")
+		return
+
+	# dot_bracket_string = pairs_to_dot_bracket(pairs, len(sequence))
+	# bg = fgb.BulgeGraph.from_dotbracket(dot_bracket_string)
+ 
+	bg = forgi.load_rna(bpseq_path, allow_many=False)
+ 
+	fig, ax = plt.subplots(figsize=(12, 12))
+	fvm.plot_rna(bg, ax=ax, text_kwargs={"fontweight": "black"}, lighten=0.7, backbone_kwargs={'linewidth': 3})
+	# fvm.plot_rna(cg, text_kwargs={"fontweight":"black"}, lighten=0.7, backbone_kwargs={"linewidth":3})
+	fig.savefig(save_path, dpi=300, bbox_inches='tight')
+	plt.close(fig)
 
 def save_results(contact_maps, data_generator, output_dir):
-    bpseq_dir = os.path.join(output_dir, 'bpseq')
-    os.makedirs(bpseq_dir, exist_ok=True)
+	bpseq_dir = os.path.join(output_dir, 'bpseq')
+	graph_dir = os.path.join(output_dir, 'structure_graph')
+	
+	os.makedirs(bpseq_dir, exist_ok=True)
+	os.makedirs(graph_dir, exist_ok=True)
 
-    print(f"Saving results to {output_dir}...")
-    
-    for i, contact_map in enumerate(tqdm(contact_maps)):
-        name = data_generator.name[i]
-        sequence = data_generator.seqs[i]
-        
-        filename = "".join(c for c in name if c.isalnum() or c in ('-', '_')).rstrip()
-        bpseq_content = contact_map_to_bpseq(sequence, contact_map)
-        bpseq_path = os.path.join(bpseq_dir, f"{filename}.bpseq")
-        with open(bpseq_path, 'w') as f:
-            f.write(bpseq_content)
+	print(f"Saving results to {output_dir}...")
+	
+	for i, contact_map in enumerate(tqdm(contact_maps)):
+		name = data_generator.name[i]
+		sequence = data_generator.seqs[i]
+		
+		filename = "".join(c for c in name if c.isalnum() or c in ('-', '_')).rstrip()
+		bpseq_content = contact_map_to_bpseq(sequence, contact_map)
+		bpseq_path = os.path.join(bpseq_dir, f"{filename}.bpseq")
+		with open(bpseq_path, 'w') as f:
+			f.write(bpseq_content)
+			
+		base_pairs = contact_map_to_pairs(contact_map)
+
+		graph_path = os.path.join(graph_dir, f"{filename}_graph.png")
+		draw_rna_structure(sequence, base_pairs, graph_path, bpseq_path)
