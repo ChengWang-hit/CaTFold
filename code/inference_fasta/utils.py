@@ -157,29 +157,37 @@ def absolute_position_embedding(seq_length, embedding_dim):
 	node_pe[:, 1::2] = torch.cos(position @ (1/div_term))
 	return node_pe
 
-def create_mask_matrix(sequence):
-	L = len(sequence)
+def create_mask_matrix(sequence, min_loop_length=4):
+    L = len(sequence)
 
-	if L == 0:
-		return np.zeros((0, 0), dtype=int)
+    if L == 0:
+        return np.zeros((0, 0), dtype=float)
 
-	seq_array = np.array(list(sequence))
+    sequence = sequence.upper().replace('T', 'U')
+    seq_array = np.array(list(sequence))
 
-	seq_row = seq_array.reshape(L, 1)
-	seq_col = seq_array.reshape(1, L)
+    seq_row = seq_array.reshape(L, 1)
+    seq_col = seq_array.reshape(1, L)
 
-	mask_AU = (seq_row == 'A') & (seq_col == 'U')
-	mask_UA = (seq_row == 'U') & (seq_col == 'A')
-	mask_GC = (seq_row == 'G') & (seq_col == 'C')
-	mask_CG = (seq_row == 'C') & (seq_col == 'G')
-	mask_GU = (seq_row == 'G') & (seq_col == 'U')
-	mask_UG = (seq_row == 'U') & (seq_col == 'G')
+    mask_AU = (seq_row == 'A') & (seq_col == 'U')
+    mask_UA = (seq_row == 'U') & (seq_col == 'A')
+    mask_GC = (seq_row == 'G') & (seq_col == 'C')
+    mask_CG = (seq_row == 'C') & (seq_col == 'G')
+    mask_GU = (seq_row == 'G') & (seq_col == 'U')
+    mask_UG = (seq_row == 'U') & (seq_col == 'G')
 
-	pairing_mask = mask_AU | mask_UA | mask_GC | mask_CG | mask_GU | mask_UG
+    pairing_mask = mask_AU | mask_UA | mask_GC | mask_CG | mask_GU | mask_UG
 
-	pairing_matrix = pairing_mask.astype(float)
+    indices = np.arange(L)
+    dist_matrix = indices.reshape(1, L) - indices.reshape(L, 1)
+    
+    loop_constraint_mask = np.abs(dist_matrix) >= min_loop_length
+    
+    final_mask = pairing_mask & loop_constraint_mask
 
-	return pairing_matrix
+    pairing_matrix = final_mask.astype(float)
+
+    return pairing_matrix
 
 def seq2set(seq):
 	set1 = {'A', 'G'}
