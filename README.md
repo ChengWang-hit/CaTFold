@@ -24,6 +24,7 @@ If you wish to try out CaTFold quickly on your own RNA sequence, we recommend th
   - [CaTFold Architecture](#catfold-architecture)
 - [Setup and Installation](#setup-and-installation)
 - [Quick Start: Prediction on Your Own Data](#quick-start-prediction-on-your-own-data)
+- [Fine-tuning on Your Own Data](#fine-tuning-on-your-own-data)
 - [Reproducing Our Results](#reproducing-our-results)
   - [Fine-tuning and Evaluation](#fine-tuning-and-evaluation)
   - [Pre-training from Scratch](#pre-training-from-scratch)
@@ -91,7 +92,35 @@ We provide pre-trained model checkpoints to allow for immediate inference and fi
     ```bash
     python code/inference_fasta/inference.py
     ```
-    The predicted secondary structures will be saved as `.bpseq` files in your specified output directory.
+    The predicted secondary structures will be saved as `.bpseq` files in your specified output directory with corresponding figures for immediate visual inspection of the results.
+
+---
+
+## Fine-tuning on Your Own Data
+
+You can easily fine-tune the pre-trained CaTFold model on your own dataset. This is useful for specializing the model on a particular RNA family or a new set of structures.
+
+**1. Prepare Your Data**
+
+   - **Create a Dataset Folder**: Inside the `data/` directory, create a new folder for your dataset (e.g., `data/your_dataset/`).
+   - **Organize `.bpseq` Files**: Place all your RNA structures in the **`.bpseq` format** inside a subdirectory named `bpseq/`. The final structure should be:
+     ```
+     data/
+     └── your_dataset/
+         └── bpseq/
+             ├── rna_1.bpseq
+             ├── rna_2.bpseq
+             └── ...
+     ```
+   - **Run the Preparation Script**: Execute `code/prepare_data.py` to process your files into the `.pickle` format required for training. For detailed instructions, see `data/README.md`.
+
+**2. Run the Fine-tuning Script**
+
+   - Creat new configuration file and fine-tuning script, pointing to your dataset. (You can copy other dataset script and modify dataset name)
+     ```bash
+     python code/finetune/your_script.py --config code/finetune/your_config_file.json
+     ```
+   - The script will load the pre-trained model, fine-tune it on your dataset, and save the new checkpoints in the log directory.
 
 ---
 
