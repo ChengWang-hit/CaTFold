@@ -109,14 +109,16 @@ def create_mask_matrix(sequence, min_loop_length=3):
 
 def main():    
     data_folder = 'data/bpseq_test/'
+    bpseq_dir = f'{data_folder}/bpseq/'
     mask_matrix_dir = f'{data_folder}/mask_matrix/'
     output_filename = 'all.pickle'
     output_path = os.path.join(data_folder, output_filename)
 
     os.makedirs(data_folder, exist_ok=True)
+    os.makedirs(bpseq_dir, exist_ok=True)
     os.makedirs(mask_matrix_dir, exist_ok=True)
 
-    processed_data = process_bpseq_folder(data_folder, mask_matrix_dir)
+    processed_data = process_bpseq_folder(bpseq_dir, mask_matrix_dir)
 
     if processed_data:
         with open(output_path, 'wb') as f:
