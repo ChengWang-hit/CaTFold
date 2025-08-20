@@ -3,7 +3,7 @@
 [![GitHub Source Code](https://img.shields.io/badge/GitHub-Source%20Code-blue?logo=github)](https://github.com/ChengWang-hit/CaTFold)
 [![Zenodo](https://img.shields.io/badge/Zenodo-10.5281/zenodo.16730061-blue)](https://doi.org/10.5281/zenodo.16730061)
 
-[![Code Ocean](https://img.shields.io/badge/CodeOcean-xxx-blue)](xxx)
+[![Code Ocean](https://img.shields.io/badge/CodeOcean-10.24433/CO.2816125.v3-blue)](https://doi.org/10.24433/CO.2816125.v3)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 This repository contains the official source code and models for the paper:
@@ -14,7 +14,7 @@ This repository contains the official source code and models for the paper:
 >
 <!-- > **[Link to Paper Coming Soon]** -->
 
-If you wish to try out CaTFold quickly on your own RNA sequence, we recommend that you use the [**Code Ocean**](xxx) web interface, where you can run the model and obtain predictions without having to install your own software. For more extensive experiments, please follow the instructions below for setting up CaTFold in your own computational environment.
+If you wish to try out CaTFold quickly on your own RNA sequence, we recommend that you use the [**Code Ocean**](https://doi.org/10.24433/CO.2816125.v3) web interface, where you can run the model and obtain predictions without having to install your own software. For more extensive experiments, please follow the instructions below for setting up CaTFold in your own computational environment.
 
 ---
 
@@ -159,7 +159,7 @@ torchrun --standalone --nproc_per_node=2 code/pretrain/pretrain_ddp.py
 ## Reproducibility with Code Ocean
 We have also made our work available as a Code Ocean Compute Capsule. This provides a pre-configured environment with all dependencies, data, and code, allowing you to run our main experiments with a single click.
 
-> **Access the Capsule: [xxx](xxx)**
+> **Access the Capsule: [10.24433/CO.2816125.v3](https://doi.org/10.24433/CO.2816125.v3)**
 
 ---
 
