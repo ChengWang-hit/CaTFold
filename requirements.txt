@@ -17,6 +17,7 @@ scipy==1.10.1
 pandas==2.0.3
 biopython==1.83
 h5py==3.11.0
+ViennaRNA==2.7.0
 
 # Others
 munch==4.0.0
