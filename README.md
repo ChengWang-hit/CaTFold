@@ -157,7 +157,7 @@ torchrun --standalone --nproc_per_node=2 code/pretrain/pretrain_ddp.py
 ---
 
 ## Reproducibility with Code Ocean
-We have also made our work available as a Code Ocean Compute Capsule. This provides a pre-configured environment with all dependencies, data, and code, allowing you to run our main experiments with a single click.
+We have also made our work available as a Code Ocean Compute Capsule. This provides a pre-configured environment with all dependencies, data, and code, allowing you to run our main experiments and predict your sequences using our pre-trained model with a single click.
 
 > **Access the Capsule: [10.24433/CO.2816125.v3](https://doi.org/10.24433/CO.2816125.v3)**
 
