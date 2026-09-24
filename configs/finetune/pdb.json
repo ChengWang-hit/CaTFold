@@ -1,0 +1,43 @@
+{
+  "base": "base.json",
+  "init_checkpoint": "checkpoints/pretrain_clean_max600.pt",
+  "batch_size": 4,
+  "pretrain_learning_rate": 0.000001,
+  "adapter_learning_rate": 0.0003,
+  "weight_decay": 0.01,
+  "pos_weight": 15.0,
+  "soft_f1_weight": 0.2,
+  "reload_best_between_stages": true,
+  "stages": [
+    {
+      "name": "bpRNA-1m + RNAStralign transfer",
+      "epochs": 200,
+      "train": [
+        {"file": "data/bpRNA_1m/train.pickle", "mask_dir": "data/bpRNA_1m"},
+        {"file": "data/RNAStralign/train_max600.pickle", "mask_dir": "data/RNAStralign"}
+      ]
+    },
+    {
+      "name": "PDB TR1 fine-tuning",
+      "epochs": 20,
+      "train": [
+        {"file": "data/PDB/TR1.pickle", "mask_dir": "data/PDB"}
+      ]
+    }
+  ],
+  "evaluation": {
+    "name": "PDB VL1 validation",
+    "file": "data/PDB/VL1.pickle",
+    "mask_dir": "data/PDB"
+  },
+  "test": {
+    "name": "PDB test",
+    "datasets": [
+      {"file": "data/PDB/TS1.pickle", "mask_dir": "data/PDB"},
+      {"file": "data/PDB/TS2.pickle", "mask_dir": "data/PDB"},
+      {"file": "data/PDB/TS3.pickle", "mask_dir": "data/PDB"},
+      {"file": "data/PDB/TS_hard.pickle", "mask_dir": "data/PDB"}
+    ]
+  },
+  "output_dir": "logs/finetune/pdb"
+}

@@ -1,0 +1,27 @@
+{
+  "data_root": "data",
+  "min_loop_length": 3,
+  "namespaces": [
+    {
+      "mask_dir": "PDB",
+      "primary_files": ["PDB/TR1.pickle", "PDB/VL1.pickle", "PDB/TS1.pickle", "PDB/TS2.pickle", "PDB/TS3.pickle", "PDB/TS_hard.pickle"]
+    },
+    {
+      "mask_dir": "bpRNA_1m",
+      "primary_files": ["bpRNA_1m/train.pickle", "bpRNA_1m/val.pickle", "bpRNA_1m/test.pickle"]
+    },
+    {
+      "mask_dir": "bpRNA_new",
+      "primary_files": ["bpRNA_new/all.pickle"]
+    },
+    {
+      "mask_dir": "RNAStralign",
+      "primary_files": ["RNAStralign/train_max600.pickle", "RNAStralign/val_max600.pickle", "RNAStralign/test_max600.pickle"]
+    },
+    {
+      "mask_dir": "ArchiveII",
+      "primary_files": ["ArchiveII/all_max600.pickle"],
+      "reuse_files": ["ArchiveII/family_fold/5s.pickle", "ArchiveII/family_fold/16s.pickle", "ArchiveII/family_fold/23s.pickle", "ArchiveII/family_fold/RNaseP.pickle", "ArchiveII/family_fold/grp1.pickle", "ArchiveII/family_fold/srp.pickle", "ArchiveII/family_fold/tRNA.pickle", "ArchiveII/family_fold/telomerase.pickle", "ArchiveII/family_fold/tmRNA.pickle"]
+    }
+  ]
+}

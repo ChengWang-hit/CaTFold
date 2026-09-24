@@ -1,0 +1,26 @@
+{
+  "base": "base.json",
+  "init_checkpoint": "checkpoints/pretrain_clean_max600.pt",
+  "epochs": 40,
+  "batch_size": 4,
+  "pretrain_learning_rate": 0.00001,
+  "adapter_learning_rate": 0.001,
+  "weight_decay": 0.01,
+  "pos_weight": 4.0,
+  "soft_f1_weight": 0.12,
+  "train": [
+    {"file": "data/bpRNA_1m/train.pickle", "mask_dir": "data/bpRNA_1m"}
+  ],
+  "evaluation": {
+    "name": "bpRNA-1m validation",
+    "file": "data/bpRNA_1m/val.pickle",
+    "mask_dir": "data/bpRNA_1m"
+  },
+  "test": {
+    "name": "bpRNA-new test",
+    "datasets": [
+      {"file": "data/bpRNA_new/all.pickle", "mask_dir": "data/bpRNA_new"}
+    ]
+  },
+  "output_dir": "logs/finetune/bprna_new"
+}

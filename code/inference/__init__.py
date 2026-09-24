@@ -1,0 +1,1 @@
+"""FASTA inference entry point."""

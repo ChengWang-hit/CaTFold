@@ -1,0 +1,18 @@
+{
+  "seed": 2026,
+  "training_data": "data/pretrain/clean_max600.h5",
+  "embedding_dim": 256,
+  "layer_num": 8,
+  "nhead": 8,
+  "epochs": 10,
+  "batch_size": 16,
+  "num_workers": 4,
+  "learning_rate": 0.001,
+  "weight_decay": 0.01,
+  "pos_weight": 10.0,
+  "max_grad_norm": 1.0,
+  "mixed_precision": "bf16",
+  "loss_log_interval": 5000,
+  "save_every": 1,
+  "output_dir": "logs/pretrain/clean_max600"
+}

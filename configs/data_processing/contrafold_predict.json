@@ -1,0 +1,20 @@
+{
+  "contrafold_path": "",
+  "workers": 64,
+  "batch_size": 1000,
+  "timeout": 600,
+  "datasets": [
+    {
+      "name": "clean_max600",
+      "fasta": "data/pretrain/clean_max600.fa.gz",
+      "output": "data/pretrain/clean_max600.h5",
+      "expected_records": 12448932
+    },
+    {
+      "name": "unfiltered_max600",
+      "fasta": "data/pretrain/unfiltered_max600.fa.gz",
+      "output": "data/pretrain/unfiltered_max600.h5",
+      "expected_records": 29384451
+    }
+  ]
+}

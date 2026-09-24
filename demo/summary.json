@@ -1,0 +1,27 @@
+{
+  "total": 3,
+  "successful": 3,
+  "failed": 0,
+  "output_directory": ".",
+  "predictions": [
+    {
+      "id": "bpRNAnew_3524 length=72 source=bpRNA_new/all.pickle",
+      "length": 72,
+      "pairs": 16,
+      "output_directory": "bpRNAnew_3524"
+    },
+    {
+      "id": "bpRNAnew_4558 length=103 source=bpRNA_new/all.pickle",
+      "length": 103,
+      "pairs": 22,
+      "output_directory": "bpRNAnew_4558"
+    },
+    {
+      "id": "bpRNAnew_0977 length=120 source=bpRNA_new/all.pickle",
+      "length": 120,
+      "pairs": 39,
+      "output_directory": "bpRNAnew_0977"
+    }
+  ],
+  "failures": []
+}

@@ -1,0 +1,10 @@
+.venv/
+.ruff_cache/
+__pycache__/
+*.py[cod]
+/data/
+/checkpoints/
+logs/**
+!logs/.gitkeep
+/README_INTERNAL_TEST.md
+.DS_Store

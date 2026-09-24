@@ -1,0 +1,67 @@
+{
+  "model": {
+    "embedding_dim": 256,
+    "layer_num": 8,
+    "nhead": 8,
+    "adapter_hidden_dim": 64,
+    "adapter_dropout": 0.4,
+    "train_pair_out": true
+  },
+  "decoding": {
+    "min_loop_length": 3,
+    "threshold": 0.5
+  },
+  "familyfold_model": {
+    "protocol": "frozen_unfiltered_catfold_zablocki_fusion",
+    "backbone_checkpoint": "pretrain_unfiltered_max600.pt",
+    "checkpoint_epoch": 5,
+    "hidden_dim": 64,
+    "resnet_blocks": 2,
+    "kernel_size": 3
+  },
+  "output_dir": "results/evaluation",
+  "conventional": [
+    {
+      "name": "bpRNA-new",
+      "checkpoint": "finetune_bprna_new.pt",
+      "splits": [
+        {"name": "all", "file": "bpRNA_new/all.pickle", "mask_dir": "bpRNA_new"}
+      ]
+    },
+    {
+      "name": "PDB",
+      "checkpoint": "finetune_pdb.pt",
+      "splits": [
+        {"name": "TS1", "file": "PDB/TS1.pickle", "mask_dir": "PDB"},
+        {"name": "TS2", "file": "PDB/TS2.pickle", "mask_dir": "PDB"},
+        {"name": "TS3", "file": "PDB/TS3.pickle", "mask_dir": "PDB"},
+        {"name": "TS_hard", "file": "PDB/TS_hard.pickle", "mask_dir": "PDB"}
+      ]
+    },
+    {
+      "name": "bpRNA-1m",
+      "checkpoint": "finetune_bprna_1m.pt",
+      "splits": [
+        {"name": "test", "file": "bpRNA_1m/test.pickle", "mask_dir": "bpRNA_1m"}
+      ]
+    },
+    {
+      "name": "ArchiveII",
+      "checkpoint": "finetune_archiveii.pt",
+      "splits": [
+        {"name": "all_max600", "file": "ArchiveII/all_max600.pickle", "mask_dir": "ArchiveII"}
+      ]
+    }
+  ],
+  "familyfold": [
+    {"name": "5S", "file": "ArchiveII/family_fold/5s.pickle", "checkpoint": "familyfold_5s.pt"},
+    {"name": "16S", "file": "ArchiveII/family_fold/16s.pickle", "checkpoint": "familyfold_16s.pt"},
+    {"name": "23S", "file": "ArchiveII/family_fold/23s.pickle", "checkpoint": "familyfold_23s.pt"},
+    {"name": "RNaseP", "file": "ArchiveII/family_fold/RNaseP.pickle", "checkpoint": "familyfold_rnase_p.pt"},
+    {"name": "Group I intron", "file": "ArchiveII/family_fold/grp1.pickle", "checkpoint": "familyfold_group_i_intron.pt"},
+    {"name": "SRP", "file": "ArchiveII/family_fold/srp.pickle", "checkpoint": "familyfold_srp.pt"},
+    {"name": "tRNA", "file": "ArchiveII/family_fold/tRNA.pickle", "checkpoint": "familyfold_trna.pt"},
+    {"name": "Telomerase", "file": "ArchiveII/family_fold/telomerase.pickle", "checkpoint": "familyfold_telomerase.pt"},
+    {"name": "tmRNA", "file": "ArchiveII/family_fold/tmRNA.pickle", "checkpoint": "familyfold_tmrna.pt"}
+  ]
+}

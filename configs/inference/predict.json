@@ -1,0 +1,11 @@
+{
+  "embedding_dim": 256,
+  "layer_num": 8,
+  "nhead": 8,
+  "adapter_hidden_dim": 64,
+  "adapter_dropout": 0.4,
+  "train_pair_out": true,
+  "min_loop_length": 3,
+  "validated_max_length": 600,
+  "threshold": 0.5
+}
