@@ -1,6 +1,6 @@
 # CaTFold
 
-[![GitHub Source Code](https://img.shields.io/badge/GitHub-Source%20Code-blue?logo=github)](https://github.com/ChengWang-hit/CaTFold) [![Code Ocean](https://img.shields.io/badge/Code%20Ocean-Published-blue)](https://doi.org/10.24433/CO.8228673.v1)
+[![GitHub Source Code](https://img.shields.io/badge/GitHub-Source%20Code-blue?logo=github)](https://github.com/ChengWang-hit/CaTFold) [![Code Ocean DOI](https://img.shields.io/badge/Code%20Ocean-10.24433%2FCO.8228673.v1-blue)](https://doi.org/10.24433/CO.8228673.v1)
 
 CaTFold is a deep-learning method for RNA secondary-structure prediction. This repository provides the code and configurations required for benchmark evaluation, FASTA inference, pretraining, and fine-tuning. Model checkpoints, benchmark datasets, and pretraining sequences are distributed separately through Cloudflare R2 because of their size.
 
