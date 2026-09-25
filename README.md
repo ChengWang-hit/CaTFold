@@ -1,6 +1,6 @@
 # CaTFold
 
-[![GitHub Source Code](https://img.shields.io/badge/GitHub-Source%20Code-blue?logo=github)](https://github.com/ChengWang-hit/CaTFold) [![Code Ocean](https://img.shields.io/badge/Code%20Ocean-DOI%20pending-lightgrey)](#code-ocean)
+[![GitHub Source Code](https://img.shields.io/badge/GitHub-Source%20Code-blue?logo=github)](https://github.com/ChengWang-hit/CaTFold) [![Code Ocean](https://img.shields.io/badge/Code%20Ocean-Published-blue)](https://doi.org/10.24433/CO.8228673.v1)
 
 CaTFold is a deep-learning method for RNA secondary-structure prediction. This repository provides the code and configurations required for benchmark evaluation, FASTA inference, pretraining, and fine-tuning. Model checkpoints, benchmark datasets, and pretraining sequences are distributed separately through Cloudflare R2 because of their size.
 
@@ -231,9 +231,9 @@ done
 
 ## Code Ocean
 
-A Code Ocean Compute Capsule will provide a preconfigured environment for running the released evaluation and inference workflows. The DOI will be added after the capsule is published.
+The published Code Ocean Compute Capsule provides a preconfigured environment for running the released evaluation and inference workflows.
 
-**Code Ocean DOI:**
+**Code Ocean DOI:** [10.24433/CO.8228673.v1](https://doi.org/10.24433/CO.8228673.v1)
 
 ## License
 
